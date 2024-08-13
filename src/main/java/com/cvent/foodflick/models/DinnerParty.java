@@ -20,10 +20,10 @@ public class DinnerParty  extends Auditable {
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dinner_party", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Restaurant> restaurants = new ArrayList<>();
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dinner_party", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Restaurant> winning_restaurants = new ArrayList<>();
 
     @NotBlank(message = "isFinalized is mandatory")

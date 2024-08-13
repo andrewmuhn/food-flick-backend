@@ -1,5 +1,6 @@
 package com.cvent.foodflick.models.dto;
 
+import com.cvent.foodflick.models.Restaurant;
 import com.cvent.foodflick.models.VotingStrategy;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.FetchType;
