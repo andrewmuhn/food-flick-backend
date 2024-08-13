@@ -2,12 +2,14 @@ package com.cvent.foodflick;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-public class FoodflickApplication {
+@EnableJpaAuditing
+public class FoodFlickApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FoodflickApplication.class, args);
+		SpringApplication.run(FoodFlickApplication.class, args);
 	}
 
 }
