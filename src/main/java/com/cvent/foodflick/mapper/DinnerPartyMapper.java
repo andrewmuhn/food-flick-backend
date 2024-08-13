@@ -1,4 +1,15 @@
 package com.cvent.foodflick.mapper;
 
-public class DinnerPartyMapper {
+import com.cvent.foodflick.models.DinnerParty;
+import com.cvent.foodflick.models.dto.CreateDinnerPartyDTO;
+import com.cvent.foodflick.models.dto.DinnerPartyDTO;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+@Mapper(componentModel = "spring", uses = {RestaurantMapper.class})
+public interface DinnerPartyMapper {
+    @Mapping(source = "restaurants", target = "restaurants")
+    DinnerPartyDTO toDinnerPartyDTO(DinnerParty dinnerParty);
+    DinnerParty toDinnerParty(DinnerPartyDTO dinnerPartyDTO);
+    DinnerParty fromCreateDinnerPartyDTO(CreateDinnerPartyDTO createDinnerPartyDTO);
 }
