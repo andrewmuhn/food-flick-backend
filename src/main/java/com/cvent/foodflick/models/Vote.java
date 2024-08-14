@@ -49,10 +49,10 @@ public class Vote extends Auditable{
 
     @NotBlank
     public long getRestaurant() {
-        return restaurant.getId();
+        return restaurant;
     }
 
     public void setRestaurant(@NotBlank long restaurant) {
-        this.restaurant = restaurant.getId();
+        this.restaurant = restaurant;
     }
 }
