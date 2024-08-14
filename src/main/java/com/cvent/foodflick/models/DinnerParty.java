@@ -2,8 +2,6 @@ package com.cvent.foodflick.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,22 +23,22 @@ public class DinnerParty extends Auditable {
     @OneToMany(mappedBy = "dinnerParty", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Restaurant> winning_restaurants = new ArrayList<>();
 
+    @NotBlank(message = "isFinalized is mandatory")
     private boolean isFinalized;
 
     @NotBlank(message = "Location is mandatory")
     private String location;
 
-    @NotNull(message = "Date is mandatory")
+    @NotBlank(message = "Date is mandatory")
     private LocalDate party_date;
 
-    @NotNull(message = "Time is mandatory")
+    @NotBlank(message = "Time is mandatory")
     private LocalDateTime party_time;
 
 
     private VotingStrategy votingStrategy;
 
     public DinnerParty() {
-        this.isFinalized = false;
     }
 
     public DinnerParty(Long id, String party_name, List<Restaurant> restaurants, List<Restaurant> winning_restaurants, boolean isFinalized, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {

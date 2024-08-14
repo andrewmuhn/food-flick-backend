@@ -3,7 +3,6 @@ package com.cvent.foodflick.models.dto;
 import com.cvent.foodflick.models.VotingStrategy;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,15 +13,16 @@ public class CreateDinnerPartyDTO {
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
 
+    @NotBlank(message = "isFinalized is mandatory")
+    private boolean isFinalized;
+
     @NotBlank(message = "Location is mandatory")
     private String location;
 
-    private boolean isFinalized = false;
-
-    @NotNull(message = "Date is mandatory")
+    @NotBlank(message = "Date is mandatory")
     private LocalDate party_date;
 
-    @NotNull(message = "Time is mandatory")
+    @NotBlank(message = "Time is mandatory")
     private LocalDateTime party_time;
 
     private VotingStrategy votingStrategy;
@@ -30,8 +30,9 @@ public class CreateDinnerPartyDTO {
     public CreateDinnerPartyDTO() {
     }
 
-    public CreateDinnerPartyDTO(String dinner_host, String party_name, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {
+    public CreateDinnerPartyDTO(String dinner_host, String party_name, boolean isFinalized, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {
         this.party_name = party_name;
+        this.isFinalized = isFinalized;
         this.location = location;
         this.party_date = party_date;
         this.party_time = party_time;
@@ -46,20 +47,20 @@ public class CreateDinnerPartyDTO {
         this.party_name = party_name;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public boolean isFinalized() {
         return isFinalized;
     }
 
     public void setFinalized(boolean finalized) {
         isFinalized = finalized;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public LocalDate getParty_date() {

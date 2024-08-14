@@ -7,7 +7,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,29 +15,23 @@ import java.util.List;
 
 public class DinnerPartyDTO {
     private Long id;
+    @NotBlank
+    private String dinner_host;
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
     private List<Restaurant> restaurants = new ArrayList<>();
     private List<Restaurant> winning_restaurants = new ArrayList<>();
-
+    @NotBlank(message = "isFinalized is mandatory")
     private boolean isFinalized;
     @NotBlank(message = "Location is mandatory")
     private String location;
-    @NotNull(message = "Date is mandatory")
+    @NotBlank(message = "Date is mandatory")
     private LocalDate party_date;
-    @NotNull(message = "Time is mandatory")
+    @NotBlank(message = "Time is mandatory")
     private LocalDateTime party_time;
     private VotingStrategy votingStrategy;
 
     public DinnerPartyDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getParty_name() {
