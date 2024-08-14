@@ -16,13 +16,12 @@ public class Vote extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotBlank
-    private long id;
+    private long vote_id;
 
     @NotBlank
     private boolean vote;
 
-    @NotBlank
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
@@ -31,11 +30,11 @@ public class Vote extends Auditable{
 
     @NotBlank
     public long getId() {
-        return id;
+        return vote_id;
     }
 
     public void setId(@NotBlank long id) {
-        this.id = id;
+        this.vote_id = id;
     }
 
     @NotBlank
