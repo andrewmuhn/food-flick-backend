@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
@@ -17,31 +19,40 @@ public class Vote extends Auditable{
     private long id;
 
     @NotBlank
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private long user_id;
-
-    @NotBlank
     private boolean vote;
 
     @NotBlank
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dinner_parties", referencedColumnName = "id")
-    private long dinner_party_id;
-
-    @NotBlank
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurants", referencedColumnName = "id")
-    private long restaurant;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
     public Vote() {
     }
 
-    public Vote(long id, long user_id, boolean vote, long dinner_party_id, long restaurant) {
+    @NotBlank
+    public long getId() {
+        return id;
+    }
+
+    public void setId(@NotBlank long id) {
         this.id = id;
-        this.user_id = user_id;
+    }
+
+    @NotBlank
+    public boolean isVote() {
+        return vote;
+    }
+
+    public void setVote(@NotBlank boolean vote) {
         this.vote = vote;
-        this.dinner_party_id = dinner_party_id;
-        this.restaurant = restaurant;
+    }
+
+    @NotBlank
+    public long getRestaurant() {
+        return restaurant.getId();
+    }
+
+    public void setRestaurant(@NotBlank long restaurant) {
+        this.restaurant = restaurant.getId();
     }
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface VoteRepository extends JpaRepository<Vote, Long> {
-    List<Vote> findVotesByDinnerPartyId(Long dinner_party_id);
+    List<Vote> findVotesByRestaurantId(Long restaurantId);
 }
