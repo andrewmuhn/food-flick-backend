@@ -17,12 +17,6 @@ public class UpdateDinnerPartyDTO {
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Restaurant> restaurants = new ArrayList<>();
-
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Restaurant> winning_restaurants = new ArrayList<>();
-
     @NotBlank(message = "isFinalized is mandatory")
     private boolean isFinalized;
 
@@ -46,22 +40,6 @@ public class UpdateDinnerPartyDTO {
 
     public void setParty_name(String party_name) {
         this.party_name = party_name;
-    }
-
-    public List<Restaurant> getRestaurants() {
-        return restaurants;
-    }
-
-    public void setRestaurants(List<Restaurant> restaurants) {
-        this.restaurants = restaurants;
-    }
-
-    public List<Restaurant> getWinning_restaurants() {
-        return winning_restaurants;
-    }
-
-    public void setWinning_restaurants(List<Restaurant> winning_restaurants) {
-        this.winning_restaurants = winning_restaurants;
     }
 
     public boolean isFinalized() {

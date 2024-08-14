@@ -35,7 +35,7 @@ public class DinnerPartyService {
         return dinnerPartyMapper.toDinnerPartyDTO(dinnerParty);
     }
 
-    public DinnerPartyDTO createDinnerPArty(CreateDinnerPartyDTO dto){
+    public DinnerPartyDTO createDinnerParty(CreateDinnerPartyDTO dto){
         DinnerParty dinnerParty = dinnerPartyMapper.fromCreateDinnerPartyDTO(dto);
         DinnerParty createdDinnerParty = dinnerPartyRepository.save(dinnerParty);
         return dinnerPartyMapper.toDinnerPartyDTO(createdDinnerParty);
@@ -44,11 +44,7 @@ public class DinnerPartyService {
     public DinnerPartyDTO updateDinnerParty(UpdateDinnerPartyDTO dto, Long id){
         DinnerParty dinnerParty = dinnerPartyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dinner Party not found with id:" + id));
-
-        dinnerParty.setRestaurants(dto.getRestaurants());
-        dinnerParty.setWinning_restaurants(dto.getWinning_restaurants());
         dinnerParty.setFinalized(dto.isFinalized());
-
         DinnerParty updatedDinnerParty = dinnerPartyRepository.save(dinnerParty);
 
         return dinnerPartyMapper.toDinnerPartyDTO(updatedDinnerParty);

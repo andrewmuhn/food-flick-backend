@@ -21,7 +21,6 @@ public class Restaurant extends Auditable{
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Vote> votes = new ArrayList<>();
 
-
     public Restaurant() {
     }
 
