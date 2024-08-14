@@ -9,7 +9,6 @@ import java.util.List;
 public class Restaurant extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(insertable = false, updatable = false)
     private Long restaurant_id;
 
     @Embedded

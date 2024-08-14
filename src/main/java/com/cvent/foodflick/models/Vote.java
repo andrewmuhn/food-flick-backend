@@ -10,15 +10,15 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Vote extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotBlank
     private long vote_id;
 
-    @NotBlank
+    @NotNull
     private boolean vote;
 
     @ManyToOne
@@ -28,7 +28,6 @@ public class Vote extends Auditable{
     public Vote() {
     }
 
-    @NotBlank
     public long getId() {
         return vote_id;
     }
@@ -37,7 +36,6 @@ public class Vote extends Auditable{
         this.vote_id = id;
     }
 
-    @NotBlank
     public boolean isVote() {
         return vote;
     }
@@ -46,7 +44,6 @@ public class Vote extends Auditable{
         this.vote = vote;
     }
 
-    @NotBlank
     public Restaurant getRestaurant() {
         return restaurant;
     }
