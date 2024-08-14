@@ -1,9 +1,11 @@
 package com.cvent.foodflick.controllers;
 
 import com.cvent.foodflick.models.dto.CreateDinnerPartyDTO;
+import com.cvent.foodflick.models.dto.CreateRestaurantDTO;
 import com.cvent.foodflick.models.dto.DinnerPartyDTO;
 import com.cvent.foodflick.models.dto.UpdateDinnerPartyDTO;
 import com.cvent.foodflick.services.DinnerPartyService;
+import com.cvent.foodflick.services.RestaurantService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,6 +50,14 @@ public class DinnerPartyController {
         var dinnerParty = dinnerPartyService.updateDinnerParty(dto, id);
 
         return new ResponseEntity<>(dinnerParty, HttpStatus.OK);
+    }
+
+    @PostMapping("/{dinnerPartyId}/restaurants")
+    public ResponseEntity<DinnerPartyDTO> addRestaurantToDinnerParty(@PathVariable Long dinnerPartyId,
+                                                                     @Valid @RequestBody CreateRestaurantDTO createRestaurantDTO) {
+        restaurantService.createRestaurantForDinnerParty(dinnerPartyId, createRestaurantDTO);
+        var updatedDinnerPartyDTO = dinnerPartyService.getDinnerPartyById(dinnerPartyId);
+        return new ResponseEntity<>(updatedDinnerPartyDTO, HttpStatus.CREATED);
     }
 
 }
