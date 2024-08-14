@@ -31,6 +31,7 @@ public class VoteService {
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(()->new ResourceNotFoundException(String.format("Restaurant with id: %d not found",
                         restaurantId)));
+        System.out.println("Restaurant: " + restaurant);
         Vote vote = voteMapper.fromCreateVoteDTO(dto);
         vote.setRestaurant(restaurant);
         Vote createdVote = voteRepository.save(vote);

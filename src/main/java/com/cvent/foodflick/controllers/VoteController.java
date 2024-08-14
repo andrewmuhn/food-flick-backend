@@ -36,7 +36,7 @@ public class VoteController {
 
     @PostMapping("/{restaurantId}")
     public ResponseEntity<VoteDTO> createVote(@PathVariable Long restaurantId, @Valid @RequestBody CreateVoteDTO dto){
-        var vote = voteService.createVote(dto, restaurantId);
-        return new ResponseEntity<>(vote, HttpStatus.CREATED);
+        voteService.createVote(dto, restaurantId);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
