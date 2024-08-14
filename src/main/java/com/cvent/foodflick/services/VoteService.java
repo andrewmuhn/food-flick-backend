@@ -1,6 +1,8 @@
 package com.cvent.foodflick.services;
 
+import com.cvent.foodflick.exceptions.ResourceNotFoundException;
 import com.cvent.foodflick.mapper.VoteMapper;
+import com.cvent.foodflick.models.Restaurant;
 import com.cvent.foodflick.models.Vote;
 import com.cvent.foodflick.models.dto.CreateVoteDTO;
 import com.cvent.foodflick.models.dto.VoteDTO;
@@ -25,8 +27,12 @@ public class VoteService {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public VoteDTO createVote(CreateVoteDTO dto){
+    public VoteDTO createVote(CreateVoteDTO dto, Long restaurantId){
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(()->new ResourceNotFoundException(String.format("Restaurant with id: %d not found",
+                        restaurantId)));
         Vote vote = voteMapper.fromCreateVoteDTO(dto);
+        vote.setRestaurant(restaurant);
         Vote createdVote = voteRepository.save(vote);
         return voteMapper.toVoteDTO(createdVote);
     }
