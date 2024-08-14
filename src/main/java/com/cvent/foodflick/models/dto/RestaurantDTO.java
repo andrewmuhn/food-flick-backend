@@ -3,7 +3,7 @@ package com.cvent.foodflick.models.dto;
 import com.cvent.foodflick.models.YelpMetaData;
 
 public class RestaurantDTO {
-    private Long id;
+    private Long restaurant_id;
     private YelpMetaData yelpMetaData;
 
     private Long dinner_party_id;
@@ -12,11 +12,11 @@ public class RestaurantDTO {
     }
 
     public Long getId() {
-        return id;
+        return restaurant_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.restaurant_id = id;
     }
 
     public YelpMetaData getYelpMetaData() {

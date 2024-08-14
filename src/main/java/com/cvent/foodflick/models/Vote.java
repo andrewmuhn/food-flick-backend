@@ -32,7 +32,7 @@ public class Vote extends Auditable{
         return vote_id;
     }
 
-    public void setId(@NotBlank long id) {
+    public void setId(long id) {
         this.vote_id = id;
     }
 
@@ -40,7 +40,7 @@ public class Vote extends Auditable{
         return vote;
     }
 
-    public void setVote(@NotBlank boolean vote) {
+    public void setVote(boolean vote) {
         this.vote = vote;
     }
 
@@ -48,7 +48,7 @@ public class Vote extends Auditable{
         return restaurant;
     }
 
-    public void setRestaurant(@NotBlank Restaurant restaurant) {
+    public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
 }
