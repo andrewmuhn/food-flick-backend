@@ -9,21 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class DinnerParty  extends Auditable {
+public class DinnerParty extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Host is mandatory.")
-    private long dinner_host;
-
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
 
-    @OneToMany(mappedBy = "dinner_party", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dinnerParty", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Restaurant> restaurants = new ArrayList<>();
 
-    @OneToMany(mappedBy = "dinner_party", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dinnerParty", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Restaurant> winning_restaurants = new ArrayList<>();
 
     @NotBlank(message = "isFinalized is mandatory")
@@ -44,9 +41,8 @@ public class DinnerParty  extends Auditable {
     public DinnerParty() {
     }
 
-    public DinnerParty(Long id, long dinner_host, String party_name, List<Restaurant> restaurants, List<Restaurant> winning_restaurants, boolean isFinalized, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {
+    public DinnerParty(Long id, String party_name, List<Restaurant> restaurants, List<Restaurant> winning_restaurants, boolean isFinalized, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {
         this.id = id;
-        this.dinner_host = dinner_host;
         this.party_name = party_name;
         this.restaurants = restaurants;
         this.winning_restaurants = winning_restaurants;
@@ -63,14 +59,6 @@ public class DinnerParty  extends Auditable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public long getDinner_host() {
-        return dinner_host;
-    }
-
-    public void setDinner_host(long dinner_host) {
-        this.dinner_host = dinner_host;
     }
 
     public String getParty_name() {
