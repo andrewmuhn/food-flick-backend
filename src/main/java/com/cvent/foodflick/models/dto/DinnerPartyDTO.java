@@ -14,32 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DinnerPartyDTO {
-    @Id
-    private long id;
-
+    private Long id;
     @NotBlank
     private String dinner_host;
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
-
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Restaurant> restaurants = new ArrayList<>();
-
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Restaurant> winning_restaurants = new ArrayList<>();
-
     @NotBlank(message = "isFinalized is mandatory")
     private boolean isFinalized;
-
     @NotBlank(message = "Location is mandatory")
     private String location;
-
     @NotBlank(message = "Date is mandatory")
     private LocalDate party_date;
-
     @NotBlank(message = "Time is mandatory")
     private LocalDateTime party_time;
-
     private VotingStrategy votingStrategy;
 
     public DinnerPartyDTO() {

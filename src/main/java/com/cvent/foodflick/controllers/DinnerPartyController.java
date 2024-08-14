@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/DinnerParty")
+@RequestMapping("/api/dinner-party")
 public class DinnerPartyController {
     private DinnerPartyService dinnerPartyService;
     private final RestaurantService restaurantService;
@@ -39,7 +39,7 @@ public class DinnerPartyController {
 
     @PostMapping
     public ResponseEntity<DinnerPartyDTO> createDinnerParty(@Valid @RequestBody CreateDinnerPartyDTO dto){
-        var dinnerParty = dinnerPartyService.createDinnerPArty(dto);
+        var dinnerParty = dinnerPartyService.createDinnerParty(dto);
 
         return new ResponseEntity<>(dinnerParty, HttpStatus.CREATED);
     }
@@ -56,8 +56,8 @@ public class DinnerPartyController {
     public ResponseEntity<DinnerPartyDTO> addRestaurantToDinnerParty(@PathVariable Long dinnerPartyId,
                                                                      @Valid @RequestBody CreateRestaurantDTO createRestaurantDTO) {
         restaurantService.createRestaurantForDinnerParty(dinnerPartyId, createRestaurantDTO);
-        var updatedDinnerPartyDTO = dinnerPartyService.getDinnerPartyById(dinnerPartyId);
-        return new ResponseEntity<>(updatedDinnerPartyDTO, HttpStatus.CREATED);
+//        var updatedDinnerPartyDTO = dinnerPartyService.getDinnerPartyById(dinnerPartyId);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

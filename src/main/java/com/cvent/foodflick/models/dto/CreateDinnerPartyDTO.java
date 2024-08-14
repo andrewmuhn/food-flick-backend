@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateDinnerPartyDTO {
-    @NotBlank(message = "Host is mandatory")
-    private String dinner_host;
-
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
 
@@ -34,21 +31,12 @@ public class CreateDinnerPartyDTO {
     }
 
     public CreateDinnerPartyDTO(String dinner_host, String party_name, boolean isFinalized, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {
-        this.dinner_host = dinner_host;
         this.party_name = party_name;
         this.isFinalized = isFinalized;
         this.location = location;
         this.party_date = party_date;
         this.party_time = party_time;
         this.votingStrategy = votingStrategy;
-    }
-
-    public String getDinner_host() {
-        return dinner_host;
-    }
-
-    public void setDinner_host(String dinner_host) {
-        this.dinner_host = dinner_host;
     }
 
     public String getParty_name() {
