@@ -1,12 +1,10 @@
 package com.cvent.foodflick.services;
 
-import com.cvent.foodflick.exceptions.ResourceNotFoundException;
 import com.cvent.foodflick.mapper.VoteMapper;
-import com.cvent.foodflick.models.DinnerParty;
 import com.cvent.foodflick.models.Vote;
 import com.cvent.foodflick.models.dto.CreateVoteDTO;
 import com.cvent.foodflick.models.dto.VoteDTO;
-import com.cvent.foodflick.repositories.DinnerPartyRepository;
+import com.cvent.foodflick.repositories.RestaurantRepository;
 import com.cvent.foodflick.repositories.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -48,11 +48,11 @@ public class Vote extends Auditable{
     }
 
     @NotBlank
-    public long getRestaurant() {
+    public Restaurant getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurant(@NotBlank long restaurant) {
+    public void setRestaurant(@NotBlank Restaurant restaurant) {
         this.restaurant = restaurant;
     }
 }
