@@ -1,21 +1,20 @@
 package com.cvent.foodflick.models.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class VoteDTO {
-    private long id;
+    private long vote_id;
 
-    @NotBlank
+    @NotNull
     private boolean vote;
 
-    @NotBlank
     private long restaurantId;
 
     public VoteDTO() {
     }
 
     public VoteDTO(long id, boolean vote, long restaurantId) {
-        this.id = id;
+        this.vote_id = id;
         this.vote = vote;
         this.restaurantId = restaurantId;
     }
