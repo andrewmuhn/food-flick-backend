@@ -9,7 +9,8 @@ import java.util.List;
 public class Restaurant extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Column(insertable = false, updatable = false)
+    private Long restaurant_id;
 
     @Embedded
     private YelpMetaData yelpMetaData;
@@ -25,17 +26,17 @@ public class Restaurant extends Auditable{
     }
 
     public Restaurant(Long id, YelpMetaData yelpMetaData, DinnerParty dinnerParty) {
-        this.id = id;
+        this.restaurant_id = id;
         this.yelpMetaData = yelpMetaData;
         this.dinnerParty = dinnerParty;
     }
 
     public Long getId() {
-        return id;
+        return restaurant_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.restaurant_id = id;
     }
 
     public YelpMetaData getYelpMetaData() {
