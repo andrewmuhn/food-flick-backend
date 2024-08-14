@@ -6,6 +6,8 @@ public class RestaurantDTO {
     private Long id;
     private YelpMetaData yelpMetaData;
 
+    private Long dinner_party_id;
+
     public RestaurantDTO() {
     }
 

@@ -2,6 +2,9 @@ package com.cvent.foodflick.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Restaurant extends Auditable{
     @Id
@@ -11,9 +14,13 @@ public class Restaurant extends Auditable{
     @Embedded
     private YelpMetaData yelpMetaData;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "dinner_party_id")
     private DinnerParty dinnerParty;
+
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Vote> votes = new ArrayList<>();
+
 
     public Restaurant() {
     }
