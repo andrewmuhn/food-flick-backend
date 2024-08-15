@@ -53,7 +53,7 @@ public class DinnerPartyController {
         return new ResponseEntity<>(dinnerParty, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/lock")
     public ResponseEntity<DinnerPartyDTO> lockDinnerPartyVotes(@Valid @RequestBody LockDinnerPartyVotesDTO dto,
                                                                @PathVariable Long id){
         var dinnerParty = dinnerPartyService.lockDinnerPartyVotes(dto, id);
