@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 public class Vote extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long vote_id;
+    private Long vote_id;
 
     @NotNull
     private boolean vote;
@@ -28,11 +28,17 @@ public class Vote extends Auditable{
     public Vote() {
     }
 
-    public long getId() {
+    public Vote(Long vote_id, boolean vote, Restaurant restaurant) {
+        this.vote_id = vote_id;
+        this.vote = vote;
+        this.restaurant = restaurant;
+    }
+
+    public Long getId() {
         return vote_id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.vote_id = id;
     }
 

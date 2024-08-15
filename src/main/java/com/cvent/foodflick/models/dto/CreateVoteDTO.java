@@ -11,7 +11,7 @@ public class CreateVoteDTO {
     public CreateVoteDTO() {
     }
 
-    public CreateVoteDTO(boolean vote, long restaurant_id) {
+    public CreateVoteDTO(boolean vote, Long restaurant_id) {
         this.vote = vote;
         this.restaurant_id = restaurant_id;
     }
@@ -24,11 +24,11 @@ public class CreateVoteDTO {
         this.vote = vote;
     }
 
-    public long getRestaurant_id() {
+    public Long getRestaurant_id() {
         return restaurant_id;
     }
 
-    public void setRestaurant_id(long restaurant_id) {
+    public void setRestaurant_id(Long restaurant_id) {
         this.restaurant_id = restaurant_id;
     }
 }
