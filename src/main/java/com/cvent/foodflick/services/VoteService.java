@@ -15,9 +15,9 @@ import java.util.List;
 
 @Service
 public class VoteService {
-    private VoteRepository voteRepository;
-    private VoteMapper voteMapper;
-    private RestaurantRepository restaurantRepository;
+    private final VoteRepository voteRepository;
+    private final VoteMapper voteMapper;
+    private final RestaurantRepository restaurantRepository;
 
     @Autowired
     public VoteService(VoteRepository voteRepository, VoteMapper voteMapper,
@@ -31,7 +31,7 @@ public class VoteService {
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(()->new ResourceNotFoundException(String.format("Restaurant with id: %d not found",
                         restaurantId)));
-        System.out.println("Restaurant: " + restaurant);
+
         Vote vote = voteMapper.fromCreateVoteDTO(dto);
         vote.setRestaurant(restaurant);
         Vote createdVote = voteRepository.save(vote);

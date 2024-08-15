@@ -3,27 +3,25 @@ package com.cvent.foodflick.models.dto;
 import jakarta.validation.constraints.NotNull;
 
 public class VoteDTO {
-    private long vote_id;
-
-    @NotNull
+    private Long vote_id;
     private boolean vote;
 
-    private long restaurant_id;
+    private Long restaurant_id;
 
     public VoteDTO() {
     }
 
-    public VoteDTO(long id, boolean vote, long restaurant_id) {
+    public VoteDTO(Long id, boolean vote, Long restaurant_id) {
         this.vote_id = id;
         this.vote = vote;
         this.restaurant_id = restaurant_id;
     }
 
-    public long getVote_id() {
+    public Long getVote_id() {
         return vote_id;
     }
 
-    public void setVote_id(long vote_id) {
+    public void setVote_id(Long vote_id) {
         this.vote_id = vote_id;
     }
 
@@ -35,11 +33,11 @@ public class VoteDTO {
         this.vote = vote;
     }
 
-    public long getRestaurant_id() {
+    public Long getRestaurant_id() {
         return restaurant_id;
     }
 
-    public void setRestaurant_id(long restaurant_id) {
+    public void setRestaurant_id(Long restaurant_id) {
         this.restaurant_id = restaurant_id;
     }
 }
