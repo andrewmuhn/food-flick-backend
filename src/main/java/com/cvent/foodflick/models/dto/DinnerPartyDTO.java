@@ -2,10 +2,6 @@ package com.cvent.foodflick.models.dto;
 
 import com.cvent.foodflick.models.Restaurant;
 import com.cvent.foodflick.models.VotingStrategy;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -15,13 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DinnerPartyDTO {
-    private Long id;
+    private Long dinner_party_id;
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
     private List<Restaurant> restaurants = new ArrayList<>();
-    private List<Restaurant> winning_restaurants = new ArrayList<>();
-
-    private boolean isFinalized;
+    private boolean finalized;
     @NotBlank(message = "Location is mandatory")
     private String location;
     @NotNull(message = "Date is mandatory")
@@ -33,12 +27,12 @@ public class DinnerPartyDTO {
     public DinnerPartyDTO() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getDinner_party_id() {
+        return dinner_party_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDinner_party_id(Long dinner_party_id) {
+        this.dinner_party_id = dinner_party_id;
     }
 
     public String getParty_name() {
@@ -57,20 +51,12 @@ public class DinnerPartyDTO {
         this.restaurants = restaurants;
     }
 
-    public List<Restaurant> getWinning_restaurants() {
-        return winning_restaurants;
-    }
-
-    public void setWinning_restaurants(List<Restaurant> winning_restaurants) {
-        this.winning_restaurants = winning_restaurants;
-    }
-
     public boolean isFinalized() {
-        return isFinalized;
+        return finalized;
     }
 
     public void setFinalized(boolean finalized) {
-        isFinalized = finalized;
+        this.finalized = finalized;
     }
 
     public String getLocation() {
