@@ -1,11 +1,6 @@
 package com.cvent.foodflick.controllers;
 
-import com.cvent.foodflick.models.dto.CreateDinnerPartyDTO;
-import com.cvent.foodflick.models.dto.CreateRestaurantDTO;
-import com.cvent.foodflick.models.dto.CreateVoteDTO;
-import com.cvent.foodflick.models.dto.DinnerPartyDTO;
-import com.cvent.foodflick.models.dto.UpdateDinnerPartyDTO;
-import com.cvent.foodflick.models.dto.VoteDTO;
+import com.cvent.foodflick.models.dto.*;
 import com.cvent.foodflick.services.DinnerPartyService;
 import com.cvent.foodflick.services.RestaurantService;
 import com.cvent.foodflick.services.VoteService;
@@ -54,6 +49,14 @@ public class DinnerPartyController {
     public ResponseEntity<DinnerPartyDTO> updateDinnerParty(@Valid @RequestBody UpdateDinnerPartyDTO dto,
                                                             @PathVariable Long id){
         var dinnerParty = dinnerPartyService.updateDinnerParty(dto, id);
+
+        return new ResponseEntity<>(dinnerParty, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DinnerPartyDTO> lockDinnerPartyVotes(@Valid @RequestBody LockDinnerPartyVotesDTO dto,
+                                                               @PathVariable Long id){
+        var dinnerParty = dinnerPartyService.lockDinnerPartyVotes(dto, id);
 
         return new ResponseEntity<>(dinnerParty, HttpStatus.OK);
     }
