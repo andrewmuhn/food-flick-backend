@@ -34,7 +34,7 @@ public class DinnerPartyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DinnerPartyDTO> getRecipeById(@PathVariable Long id){
+    public ResponseEntity<DinnerPartyDTO> getDinnerPartyById(@PathVariable Long id){
         return new ResponseEntity<>(dinnerPartyService.getDinnerPartyById(id), HttpStatus.OK);
     }
 
@@ -53,7 +53,7 @@ public class DinnerPartyController {
         return new ResponseEntity<>(dinnerParty, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/lock")
     public ResponseEntity<DinnerPartyDTO> lockDinnerPartyVotes(@Valid @RequestBody LockDinnerPartyVotesDTO dto,
                                                                @PathVariable Long id){
         var dinnerParty = dinnerPartyService.lockDinnerPartyVotes(dto, id);
@@ -80,5 +80,4 @@ public class DinnerPartyController {
         var vote = voteService.createVote(dto, restaurantId);
         return new ResponseEntity<>(vote, HttpStatus.CREATED);
     }
-
 }

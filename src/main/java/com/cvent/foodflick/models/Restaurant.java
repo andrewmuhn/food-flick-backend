@@ -11,6 +11,8 @@ public class Restaurant extends Auditable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long restaurant_id;
 
+    private boolean winner;
+
     @Embedded
     private YelpMetaData yelpMetaData;
 
@@ -24,10 +26,11 @@ public class Restaurant extends Auditable{
     public Restaurant() {
     }
 
-    public Restaurant(Long id, YelpMetaData yelpMetaData, DinnerParty dinnerParty) {
+    public Restaurant(Long id, YelpMetaData yelpMetaData, DinnerParty dinnerParty, boolean winner) {
         this.restaurant_id = id;
         this.yelpMetaData = yelpMetaData;
         this.dinnerParty = dinnerParty;
+        this.winner = winner;
     }
 
     public Long getId() {
@@ -36,6 +39,30 @@ public class Restaurant extends Auditable{
 
     public void setId(Long id) {
         this.restaurant_id = id;
+    }
+
+    public Long getRestaurant_id() {
+        return restaurant_id;
+    }
+
+    public void setRestaurant_id(Long restaurant_id) {
+        this.restaurant_id = restaurant_id;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 
     public YelpMetaData getYelpMetaData() {
