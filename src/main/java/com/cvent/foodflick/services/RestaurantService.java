@@ -26,14 +26,16 @@ public class RestaurantService {
         this.dinnerPartyRepository = dinnerPartyRepository;
     }
 
-    public void createRestaurantForDinnerParty(Long dinnerPartyId, CreateRestaurantDTO createRestaurantDTO) {
+    public RestaurantDTO createRestaurantForDinnerParty(Long dinnerPartyId, CreateRestaurantDTO createRestaurantDTO) {
         DinnerParty dinnerParty = dinnerPartyRepository.findById(dinnerPartyId)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Dinner Party with id: %d not found", dinnerPartyId)));
 
         Restaurant restaurant = restaurantMapper.fromCreateRestaurantDTO(createRestaurantDTO);
         restaurant.setDinnerParty(dinnerParty);
 
-        restaurantRepository.save(restaurant);
+        Restaurant createdRestaurant = restaurantRepository.save(restaurant);
+
+        return restaurantMapper.toRestaurantDTO(createdRestaurant);
     }
 
 }

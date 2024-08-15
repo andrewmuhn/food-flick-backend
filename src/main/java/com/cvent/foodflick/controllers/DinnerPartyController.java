@@ -62,11 +62,10 @@ public class DinnerPartyController {
     }
 
     @PostMapping("/{dinnerPartyId}/restaurants")
-    public ResponseEntity<DinnerPartyDTO> addRestaurantToDinnerParty(@PathVariable Long dinnerPartyId,
+    public ResponseEntity<RestaurantDTO> addRestaurantToDinnerParty(@PathVariable Long dinnerPartyId,
                                                                      @Valid @RequestBody CreateRestaurantDTO createRestaurantDTO) {
-        restaurantService.createRestaurantForDinnerParty(dinnerPartyId, createRestaurantDTO);
-//        var updatedDinnerPartyDTO = dinnerPartyService.getDinnerPartyById(dinnerPartyId);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        var restaurant = restaurantService.createRestaurantForDinnerParty(dinnerPartyId, createRestaurantDTO);
+        return new ResponseEntity<>(restaurant, HttpStatus.CREATED);
     }
 
     @GetMapping("/restaurant/{restaurantId}/vote")
@@ -76,8 +75,8 @@ public class DinnerPartyController {
     }
 
     @PostMapping("/restaurant/{restaurantId}/vote")
-    public ResponseEntity<VoteDTO> createVote(@PathVariable Long restaurantId, @Valid @RequestBody CreateVoteDTO dto){
-        var vote = voteService.createVote(dto, restaurantId);
+    public ResponseEntity<VoteDTO> addVoteToRestaurant(@PathVariable Long restaurantId, @Valid @RequestBody CreateVoteDTO dto){
+        var vote = voteService.createVoteForRestaurant(dto, restaurantId);
         return new ResponseEntity<>(vote, HttpStatus.CREATED);
     }
 }
