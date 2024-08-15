@@ -17,8 +17,6 @@ public class CreateDinnerPartyDTO {
     @NotBlank(message = "Location is mandatory")
     private String location;
 
-    private boolean isFinalized = false;
-
     @NotNull(message = "Date is mandatory")
     private LocalDate party_date;
 
@@ -30,7 +28,7 @@ public class CreateDinnerPartyDTO {
     public CreateDinnerPartyDTO() {
     }
 
-    public CreateDinnerPartyDTO(String dinner_host, String party_name, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {
+    public CreateDinnerPartyDTO(String party_name, String location, LocalDate party_date, LocalDateTime party_time, VotingStrategy votingStrategy) {
         this.party_name = party_name;
         this.location = location;
         this.party_date = party_date;
@@ -52,14 +50,6 @@ public class CreateDinnerPartyDTO {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public boolean isFinalized() {
-        return isFinalized;
-    }
-
-    public void setFinalized(boolean finalized) {
-        isFinalized = finalized;
     }
 
     public LocalDate getParty_date() {
