@@ -27,7 +27,7 @@ public class VoteService {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public VoteDTO createVote(CreateVoteDTO dto, Long restaurantId){
+    public VoteDTO createVoteForRestaurant(CreateVoteDTO dto, Long restaurantId){
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(()->new ResourceNotFoundException(String.format("Restaurant with id: %d not found",
                         restaurantId)));

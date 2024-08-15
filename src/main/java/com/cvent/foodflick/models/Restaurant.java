@@ -26,8 +26,8 @@ public class Restaurant extends Auditable{
     public Restaurant() {
     }
 
-    public Restaurant(Long id, YelpMetaData yelpMetaData, DinnerParty dinnerParty, boolean winner) {
-        this.restaurant_id = id;
+    public Restaurant(Long restaurant_id, YelpMetaData yelpMetaData, DinnerParty dinnerParty, boolean winner) {
+        this.restaurant_id = restaurant_id;
         this.yelpMetaData = yelpMetaData;
         this.dinnerParty = dinnerParty;
         this.winner = winner;
