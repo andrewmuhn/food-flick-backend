@@ -36,9 +36,4 @@ public class RestaurantService {
         restaurantRepository.save(restaurant);
     }
 
-    public Optional<RestaurantDTO> getRestaurantById(Long id) {
-        return restaurantRepository.findById(id)
-                .map(restaurantMapper::toDTO);
-    }
-
 }
