@@ -11,8 +11,8 @@ public class VoteDTO {
     public VoteDTO() {
     }
 
-    public VoteDTO(Long id, boolean vote, Long restaurant_id) {
-        this.vote_id = id;
+    public VoteDTO(Long vote_id, boolean vote, Long restaurant_id) {
+        this.vote_id = vote_id;
         this.vote = vote;
         this.restaurant_id = restaurant_id;
     }
