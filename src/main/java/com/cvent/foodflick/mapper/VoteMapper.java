@@ -9,5 +9,5 @@ import org.mapstruct.Mapper;
 public interface VoteMapper {
     VoteDTO toVoteDTO(Vote vote);
     Vote toVote(VoteDTO dto);
-    Vote fromCreateVoteDTO(CreateVoteDTO createVoteDTO);
+    Vote fromCreateVoteDTO(CreateVoteDTO dto);
 }

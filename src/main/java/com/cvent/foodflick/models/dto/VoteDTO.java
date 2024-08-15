@@ -4,8 +4,6 @@ import jakarta.validation.constraints.NotNull;
 
 public class VoteDTO {
     private Long vote_id;
-
-    @NotNull
     private boolean vote;
 
     private Long restaurant_id;

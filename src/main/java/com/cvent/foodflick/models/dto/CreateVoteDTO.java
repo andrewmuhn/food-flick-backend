@@ -11,11 +11,6 @@ public class CreateVoteDTO {
     public CreateVoteDTO() {
     }
 
-    public CreateVoteDTO(boolean vote, Long restaurant_id) {
-        this.vote = vote;
-        this.restaurant_id = restaurant_id;
-    }
-
     public boolean isVote() {
         return vote;
     }
