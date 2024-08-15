@@ -2,10 +2,13 @@ package com.cvent.foodflick.controllers;
 
 import com.cvent.foodflick.models.dto.CreateDinnerPartyDTO;
 import com.cvent.foodflick.models.dto.CreateRestaurantDTO;
+import com.cvent.foodflick.models.dto.CreateVoteDTO;
 import com.cvent.foodflick.models.dto.DinnerPartyDTO;
 import com.cvent.foodflick.models.dto.UpdateDinnerPartyDTO;
+import com.cvent.foodflick.models.dto.VoteDTO;
 import com.cvent.foodflick.services.DinnerPartyService;
 import com.cvent.foodflick.services.RestaurantService;
+import com.cvent.foodflick.services.VoteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +20,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/dinner-party")
 public class DinnerPartyController {
-    private DinnerPartyService dinnerPartyService;
+    private final DinnerPartyService dinnerPartyService;
     private final RestaurantService restaurantService;
+    private final VoteService voteService;
 
     @Autowired
-    public DinnerPartyController(DinnerPartyService dinnerPartyService, RestaurantService restaurantService) {
+    public DinnerPartyController(DinnerPartyService dinnerPartyService, RestaurantService restaurantService,
+            VoteService voteService) {
         this.dinnerPartyService = dinnerPartyService;
         this.restaurantService = restaurantService;
+        this.voteService = voteService;
     }
 
     @GetMapping
@@ -58,6 +64,18 @@ public class DinnerPartyController {
         restaurantService.createRestaurantForDinnerParty(dinnerPartyId, createRestaurantDTO);
 //        var updatedDinnerPartyDTO = dinnerPartyService.getDinnerPartyById(dinnerPartyId);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/restaurant/{restaurantId}/vote")
+    public ResponseEntity<List<VoteDTO>> getVotesByRestaurant(@PathVariable Long restaurantId) {
+        var votes = voteService.getAllVotesByRestaurant(restaurantId);
+        return new ResponseEntity<>(votes, HttpStatus.OK);
+    }
+
+    @PostMapping("/restaurant/{restaurantId}/vote")
+    public ResponseEntity<VoteDTO> createVote(@PathVariable Long restaurantId, @Valid @RequestBody CreateVoteDTO dto){
+        var vote = voteService.createVote(dto, restaurantId);
+        return new ResponseEntity<>(vote, HttpStatus.CREATED);
     }
 
 }
