@@ -1,5 +1,6 @@
 package com.cvent.foodflick.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -34,19 +35,20 @@ public class Vote extends Auditable{
         this.restaurant = restaurant;
     }
 
-    public Long getId() {
+    public Long getVote_id() {
         return vote_id;
     }
 
-    public void setId(Long id) {
-        this.vote_id = id;
+    public void setVote_id(Long vote_id) {
+        this.vote_id = vote_id;
     }
 
+    @NotNull
     public boolean isVote() {
         return vote;
     }
 
-    public void setVote(boolean vote) {
+    public void setVote(@NotNull boolean vote) {
         this.vote = vote;
     }
 
