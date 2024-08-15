@@ -1,24 +1,15 @@
 package com.cvent.foodflick.models.dto;
 
-import com.cvent.foodflick.models.Restaurant;
 import com.cvent.foodflick.models.VotingStrategy;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UpdateDinnerPartyDTO {
 
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
-
-    @NotBlank(message = "isFinalized is mandatory")
-    private boolean isFinalized;
 
     @NotBlank(message = "Location is mandatory")
     private String location;
@@ -40,14 +31,6 @@ public class UpdateDinnerPartyDTO {
 
     public void setParty_name(String party_name) {
         this.party_name = party_name;
-    }
-
-    public boolean isFinalized() {
-        return isFinalized;
-    }
-
-    public void setFinalized(boolean finalized) {
-        isFinalized = finalized;
     }
 
     public String getLocation() {
