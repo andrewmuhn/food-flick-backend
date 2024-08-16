@@ -1,6 +1,5 @@
 package com.cvent.foodflick.models.dto;
 
-import com.cvent.foodflick.models.Restaurant;
 import com.cvent.foodflick.models.VotingStrategy;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +12,7 @@ public class DinnerPartyDTO {
     private Long dinner_party_id;
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
-    private List<Restaurant> restaurants = new ArrayList<>();
+    private List<RestaurantDTO> restaurants = new ArrayList<RestaurantDTO>();
     private boolean finalized;
     @NotBlank(message = "Location is mandatory")
     private String location;
@@ -39,11 +38,11 @@ public class DinnerPartyDTO {
         this.party_name = party_name;
     }
 
-    public List<Restaurant> getRestaurants() {
+    public List<RestaurantDTO> getRestaurants() {
         return restaurants;
     }
 
-    public void setRestaurants(List<Restaurant> restaurants) {
+    public void setRestaurants(List<RestaurantDTO> restaurants) {
         this.restaurants = restaurants;
     }
 

@@ -1,12 +1,17 @@
 package com.cvent.foodflick.models.dto;
 
+import com.cvent.foodflick.models.Vote;
 import com.cvent.foodflick.models.YelpMetaData;
+
+import java.util.List;
 
 public class RestaurantDTO {
     private Long restaurant_id;
 
     private boolean winner;
     private YelpMetaData yelpMetaData;
+
+    private List<VoteDTO> votes;
 
     private Long dinner_party_id;
 
@@ -43,5 +48,13 @@ public class RestaurantDTO {
 
     public void setYelpMetaData(YelpMetaData yelpMetaData) {
         this.yelpMetaData = yelpMetaData;
+    }
+
+    public List<VoteDTO> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<VoteDTO> votes) {
+        this.votes = votes;
     }
 }
