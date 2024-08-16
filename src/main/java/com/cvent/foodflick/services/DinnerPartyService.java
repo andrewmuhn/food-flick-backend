@@ -48,8 +48,7 @@ public class DinnerPartyService {
         dinnerParty.setParty_name(dto.getParty_name());
         dinnerParty.setLocation(dto.getLocation());
         dinnerParty.setParty_date(dto.getParty_date());
-        dinnerParty.setParty_time(dto.getParty_time());
-        dinnerParty.setVotingStrategy(dto.getVotingStrategy());
+        dinnerParty.setVoting_strategy(dto.getVoting_strategy());
         DinnerParty updatedDinnerParty = dinnerPartyRepository.save(dinnerParty);
 
         return dinnerPartyMapper.toDinnerPartyDTO(updatedDinnerParty);
