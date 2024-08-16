@@ -61,7 +61,7 @@ public class DinnerPartyController {
         return new ResponseEntity<>(dinnerParty, HttpStatus.OK);
     }
 
-    @PostMapping("/{dinnerPartyId}/restaurants")
+    @PostMapping("/{dinnerPartyId}/restaurant")
     public ResponseEntity<RestaurantDTO> addRestaurantToDinnerParty(@PathVariable Long dinnerPartyId,
                                                                      @Valid @RequestBody CreateRestaurantDTO createRestaurantDTO) {
         var restaurant = restaurantService.createRestaurantForDinnerParty(dinnerPartyId, createRestaurantDTO);
