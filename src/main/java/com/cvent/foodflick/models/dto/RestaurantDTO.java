@@ -11,7 +11,7 @@ public class RestaurantDTO {
     private boolean winner;
     private YelpMetaData yelpMetaData;
 
-//    private List<VoteDTO> votes;
+    private List<VoteDTO> votes;
 
     private Long dinner_party_id;
 
@@ -49,12 +49,12 @@ public class RestaurantDTO {
     public void setYelpMetaData(YelpMetaData yelpMetaData) {
         this.yelpMetaData = yelpMetaData;
     }
-//
-//    public List<VoteDTO> getVotes() {
-//        return votes;
-//    }
-//
-//    public void setVotes(List<VoteDTO> votes) {
-//        this.votes = votes;
-//    }
+
+    public List<VoteDTO> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<VoteDTO> votes) {
+        this.votes = votes;
+    }
 }
