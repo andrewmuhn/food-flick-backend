@@ -4,7 +4,7 @@ env:
   variables:
     ENVIRONMENT: "prod"
     SPRING_PROFILES_ACTIVE: "prod"
-    S3_BUCKET: "foodflickbackend"
+    S3_BUCKET: "food-flick-backend-bucket"
     BEANSTALK_APP_NAME: "food-flick"
     BEANSTALK_ENV_NAME: "Food-flick-env"
 
