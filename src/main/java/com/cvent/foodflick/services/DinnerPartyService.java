@@ -5,6 +5,7 @@ import com.cvent.foodflick.mapper.DinnerPartyMapper;
 import com.cvent.foodflick.models.DinnerParty;
 import com.cvent.foodflick.models.dto.CreateDinnerPartyDTO;
 import com.cvent.foodflick.models.dto.DinnerPartyDTO;
+import com.cvent.foodflick.models.dto.GetDinnerPartyDTO;
 import com.cvent.foodflick.models.dto.LockDinnerPartyVotesDTO;
 import com.cvent.foodflick.models.dto.UpdateDinnerPartyDTO;
 import com.cvent.foodflick.repositories.DinnerPartyRepository;
@@ -25,9 +26,9 @@ public class DinnerPartyService {
         this.dinnerPartyRepository = dinnerPartyRepository;
     }
 
-    public List<DinnerPartyDTO> getAllDinnerParties(){
+    public List<GetDinnerPartyDTO> getAllDinnerParties(){
         List<DinnerParty> dinnerParties = this.dinnerPartyRepository.findAll();
-        return dinnerParties.stream().map(dinnerPartyMapper::toDinnerPartyDTO).toList();
+        return dinnerParties.stream().map(dinnerPartyMapper::toGetDinnerPartyDTO).toList();
     }
 
     public DinnerPartyDTO getDinnerPartyById(Long id){
