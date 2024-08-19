@@ -37,6 +37,11 @@ public class DinnerPartyService {
         return dinnerPartyMapper.toDinnerPartyDTO(dinnerParty);
     }
 
+    public List<GetDinnerPartyDTO> getDinnerPartyByUser(String userId){
+        List<DinnerParty> dinnerParties = this.dinnerPartyRepository.findDinnerPartiesByCreatedBy(userId);
+        return dinnerParties.stream().map(dinnerPartyMapper::toGetDinnerPartyDTO).toList();
+    }
+
     public DinnerPartyDTO createDinnerParty(CreateDinnerPartyDTO dto){
         DinnerParty dinnerParty = dinnerPartyMapper.fromCreateDinnerPartyDTO(dto);
         DinnerParty createdDinnerParty = dinnerPartyRepository.save(dinnerParty);
