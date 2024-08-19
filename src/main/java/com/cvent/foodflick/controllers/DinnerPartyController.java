@@ -28,7 +28,7 @@ public class DinnerPartyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DinnerPartyDTO>> getDinnerParties(){
+    public ResponseEntity<List<GetDinnerPartyDTO>> getDinnerParties(){
         var dinnerParties = dinnerPartyService.getAllDinnerParties();
         return new ResponseEntity<>(dinnerParties, HttpStatus.OK);
     }
