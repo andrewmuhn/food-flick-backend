@@ -6,9 +6,11 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class OpenHours {
     private boolean is_overnight;
+    @Column(name = "\"start\"")
     private int start;
     @Column(name = "\"end\"")
     private int end;
+    @Column(name = "\"day\"")
     private int day;
 
     public OpenHours() {
