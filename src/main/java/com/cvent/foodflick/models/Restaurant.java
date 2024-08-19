@@ -20,7 +20,7 @@ public class Restaurant extends Auditable{
     @JoinColumn(name = "dinner_party_id")
     private DinnerParty dinnerParty;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Vote> votes = new ArrayList<>();
 
     public Restaurant() {
