@@ -5,6 +5,7 @@ import com.cvent.foodflick.mapper.RestaurantMapper;
 import com.cvent.foodflick.models.DinnerParty;
 import com.cvent.foodflick.models.Restaurant;
 import com.cvent.foodflick.models.dto.CreateRestaurantDTO;
+import com.cvent.foodflick.models.dto.DinnerPartyDTO;
 import com.cvent.foodflick.models.dto.RestaurantDTO;
 import com.cvent.foodflick.repositories.DinnerPartyRepository;
 import com.cvent.foodflick.repositories.RestaurantRepository;
@@ -36,6 +37,16 @@ public class RestaurantService {
         Restaurant createdRestaurant = restaurantRepository.save(restaurant);
 
         return restaurantMapper.toRestaurantDTO(createdRestaurant);
+    }
+
+    public RestaurantDTO updateWinnerForRestaurant(Long restaurantId){
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(() -> new ResourceNotFoundException("Restaurant with id: %d not found"+ restaurantId));
+        restaurant.setWinner(true);
+        Restaurant updatedRestaurant = restaurantRepository.save(restaurant);
+
+        return restaurantMapper.toRestaurantDTO(updatedRestaurant);
+
     }
 
 }

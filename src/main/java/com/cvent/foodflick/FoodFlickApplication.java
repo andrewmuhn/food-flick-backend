@@ -1,6 +1,6 @@
 package com.cvent.foodflick;
 
-import com.cvent.foodflick.services.utils.CalculateVotes;
+import com.cvent.foodflick.services.utils.DetermineWinners;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,14 +18,14 @@ public class FoodFlickApplication {
 		SpringApplication.run(FoodFlickApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner run(ApplicationContext context) {
-		return args -> {
-			CalculateVotes calculateVotes = context.getBean(CalculateVotes.class);
-			List<Long> winners = calculateVotes.determineWinners(27L);
-			System.out.println(winners);// Replace 1L with the actual dinner party ID
-			// you want to test
-		};
-	}
+//	@Bean
+//	public CommandLineRunner run(ApplicationContext context) {
+//		return args -> {
+//			DetermineWinners calculateVotes = context.getBean(DetermineWinners.class);
+//			List<Long> winners = calculateVotes.determineWinners(27L);
+//			System.out.println(winners);// Replace 1L with the actual dinner party ID
+//			// you want to test
+//		};
+//	}
 
 }
