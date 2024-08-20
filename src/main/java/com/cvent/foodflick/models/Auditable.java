@@ -31,4 +31,8 @@ public abstract class Auditable {
     @LastModifiedBy
     @Column(name = "last_modified_by")
     private String lastModifiedBy;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
 }
