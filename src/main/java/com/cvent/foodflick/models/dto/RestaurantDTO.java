@@ -8,12 +8,13 @@ import java.util.List;
 public class RestaurantDTO {
     private Long restaurant_id;
 
+    private Long dinner_party_id;
+
     private boolean winner;
-    private YelpMetaData yelpMetaData;
 
     private List<VoteDTO> votes;
 
-    private Long dinner_party_id;
+    private YelpMetaData yelpMetaData;
 
     public RestaurantDTO() {
     }

@@ -17,7 +17,7 @@ public class DinnerParty extends Auditable {
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
 
-    @OneToMany(mappedBy = "dinnerParty", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dinnerParty", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Restaurant> restaurants = new ArrayList<>();
 
     private boolean finalized;
