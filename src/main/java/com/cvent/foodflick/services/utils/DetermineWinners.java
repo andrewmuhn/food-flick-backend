@@ -2,13 +2,7 @@ package com.cvent.foodflick.services.utils;
 
 import com.cvent.foodflick.models.Restaurant;
 import com.cvent.foodflick.models.Vote;
-import com.cvent.foodflick.models.dto.DinnerPartyDTO;
-import com.cvent.foodflick.models.dto.RestaurantDTO;
-import com.cvent.foodflick.models.dto.VoteDTO;
-import com.cvent.foodflick.services.DinnerPartyService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
