@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface VoteMapper {
     @Mapping(source="restaurant.restaurant_id", target = "restaurant_id")
+    @Mapping(source = "createdBy", target = "createdBy")
     VoteDTO toVoteDTO(Vote vote);
     Vote toVote(VoteDTO dto);
     Vote fromCreateVoteDTO(CreateVoteDTO dto);

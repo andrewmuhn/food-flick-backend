@@ -11,6 +11,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = {RestaurantMapper.class})
 public interface DinnerPartyMapper {
     @Mapping(source = "restaurants", target = "restaurants")
+    @Mapping(source = "createdBy", target = "createdBy")
     DinnerPartyDTO toDinnerPartyDTO(DinnerParty dinnerParty);
     DinnerParty toDinnerParty(DinnerPartyDTO dinnerPartyDTO);
     DinnerParty fromCreateDinnerPartyDTO(CreateDinnerPartyDTO createDinnerPartyDTO);

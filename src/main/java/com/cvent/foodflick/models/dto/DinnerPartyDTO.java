@@ -12,14 +12,13 @@ public class DinnerPartyDTO {
     private Long dinner_party_id;
     @NotBlank(message = "Name is mandatory.")
     private String party_name;
-    private List<RestaurantDTO> restaurants = new ArrayList<RestaurantDTO>();
     private boolean finalized;
     @NotBlank(message = "Location is mandatory")
     private String location;
     private @NotNull(message = "Date is mandatory") LocalDateTime party_date;
     private VotingStrategy voting_strategy;
-
-    private String created_by;
+    private String createdBy;
+    private List<RestaurantDTO> restaurants = new ArrayList<RestaurantDTO>();
 
     public DinnerPartyDTO() {
     }
@@ -80,10 +79,10 @@ public class DinnerPartyDTO {
         this.voting_strategy = voting_strategy;
     }
 
-    public String getCreated_by() {
-        return created_by;
+    public String getCreatedBy() {
+        return createdBy;
     }
-    public void setCreated_by(String created_by) {
-        this.created_by = created_by;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }
