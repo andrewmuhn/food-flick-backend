@@ -19,6 +19,8 @@ public class DinnerPartyDTO {
     private @NotNull(message = "Date is mandatory") LocalDateTime party_date;
     private VotingStrategy voting_strategy;
 
+    private String created_by;
+
     public DinnerPartyDTO() {
     }
 
@@ -76,5 +78,12 @@ public class DinnerPartyDTO {
 
     public void setVoting_strategy(VotingStrategy voting_strategy) {
         this.voting_strategy = voting_strategy;
+    }
+
+    public String getCreated_by() {
+        return created_by;
+    }
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
     }
 }
