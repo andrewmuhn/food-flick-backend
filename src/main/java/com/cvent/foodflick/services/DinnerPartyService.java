@@ -9,6 +9,7 @@ import com.cvent.foodflick.models.dto.GetDinnerPartyDTO;
 import com.cvent.foodflick.models.dto.LockDinnerPartyVotesDTO;
 import com.cvent.foodflick.models.dto.UpdateDinnerPartyDTO;
 import com.cvent.foodflick.repositories.DinnerPartyRepository;
+import com.cvent.foodflick.services.utils.DetermineWinners;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +17,20 @@ import java.util.List;
 
 @Service
 public class DinnerPartyService {
+    private final RestaurantService restaurantService;
     private DinnerPartyRepository dinnerPartyRepository;
-
-    @Autowired
     private DinnerPartyMapper dinnerPartyMapper;
+    private DetermineWinners determineWinners;
 
     @Autowired
-    public DinnerPartyService(DinnerPartyRepository dinnerPartyRepository){
+    public DinnerPartyService(DinnerPartyRepository dinnerPartyRepository, DinnerPartyMapper dinnerPartyMapper,
+            DetermineWinners determineWinners, RestaurantService restaurantService) {
         this.dinnerPartyRepository = dinnerPartyRepository;
+        this.dinnerPartyMapper = dinnerPartyMapper;
+        this.determineWinners = determineWinners;
+        this.restaurantService = restaurantService;
     }
+
 
     public List<GetDinnerPartyDTO> getAllDinnerParties(){
         List<DinnerParty> dinnerParties = this.dinnerPartyRepository.findAll();
@@ -35,6 +41,11 @@ public class DinnerPartyService {
         var dinnerParty = this.dinnerPartyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dinner Party not found with id: " + id));
         return dinnerPartyMapper.toDinnerPartyDTO(dinnerParty);
+    }
+
+    public List<GetDinnerPartyDTO> getDinnerPartyByUser(String userId){
+        List<DinnerParty> dinnerParties = this.dinnerPartyRepository.findDinnerPartiesByCreatedBy(userId);
+        return dinnerParties.stream().map(dinnerPartyMapper::toGetDinnerPartyDTO).toList();
     }
 
     public DinnerPartyDTO createDinnerParty(CreateDinnerPartyDTO dto){
@@ -58,9 +69,12 @@ public class DinnerPartyService {
     public DinnerPartyDTO lockDinnerPartyVotes(LockDinnerPartyVotesDTO dto, Long id){
         DinnerParty dinnerParty = dinnerPartyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dinner Party not found with id:" + id));
+        List<Long> winningIds = determineWinners.determineWinners(dinnerParty.getRestaurants());
+        winningIds.forEach(restaurantService::updateWinnerForRestaurant);
         dinnerParty.setFinalized(dto.isFinalized());
         DinnerParty updatedDinnerParty = dinnerPartyRepository.save(dinnerParty);
 
         return dinnerPartyMapper.toDinnerPartyDTO(updatedDinnerParty);
     }
+
 }
