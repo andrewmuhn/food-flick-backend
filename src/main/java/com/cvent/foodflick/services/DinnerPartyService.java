@@ -66,12 +66,12 @@ public class DinnerPartyService {
         return dinnerPartyMapper.toDinnerPartyDTO(updatedDinnerParty);
     }
 
-    public DinnerPartyDTO lockDinnerPartyVotes(LockDinnerPartyVotesDTO dto, Long id){
+    public DinnerPartyDTO lockDinnerPartyVotes(Long id){
         DinnerParty dinnerParty = dinnerPartyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dinner Party not found with id:" + id));
         List<Long> winningIds = determineWinners.determineWinners(dinnerParty.getRestaurants());
         winningIds.forEach(restaurantService::updateWinnerForRestaurant);
-        dinnerParty.setFinalized(dto.isFinalized());
+        dinnerParty.setFinalized(true);
         DinnerParty updatedDinnerParty = dinnerPartyRepository.save(dinnerParty);
 
         return dinnerPartyMapper.toDinnerPartyDTO(updatedDinnerParty);
