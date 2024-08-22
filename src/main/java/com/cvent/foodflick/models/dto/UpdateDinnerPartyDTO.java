@@ -7,13 +7,10 @@ import java.time.LocalDateTime;
 
 public class UpdateDinnerPartyDTO {
 
-    @NotBlank(message = "Name is mandatory.")
     private String party_name;
 
-    @NotBlank(message = "Location is mandatory")
     private String location;
 
-    @NotBlank(message = "Date is mandatory")
     private LocalDateTime party_date;
 
     private VotingStrategy voting_strategy;

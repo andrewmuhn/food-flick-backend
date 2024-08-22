@@ -45,12 +45,11 @@ public class DinnerPartyController {
         return new ResponseEntity<>(dinnerParty, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<DinnerPartyDTO> updateDinnerParty(@Valid @RequestBody UpdateDinnerPartyDTO dto,
+    @PutMapping("/{id}/location")
+    public ResponseEntity<DinnerPartyDTO> updateDinnerPartyLocation(@Valid @RequestBody UpdateDinnerPartyLocationDTO dto,
                                                             @PathVariable Long id){
-        var dinnerParty = dinnerPartyService.updateDinnerParty(dto, id);
-
-        return new ResponseEntity<>(dinnerParty, HttpStatus.OK);
+        dinnerPartyService.updateDinnerPartyLocation(dto, id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/{id}/lock")

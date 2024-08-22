@@ -3,15 +3,12 @@ package com.cvent.foodflick.services;
 import com.cvent.foodflick.exceptions.ResourceNotFoundException;
 import com.cvent.foodflick.mapper.DinnerPartyMapper;
 import com.cvent.foodflick.models.DinnerParty;
-import com.cvent.foodflick.models.dto.CreateDinnerPartyDTO;
-import com.cvent.foodflick.models.dto.DinnerPartyDTO;
-import com.cvent.foodflick.models.dto.GetDinnerPartyDTO;
-import com.cvent.foodflick.models.dto.LockDinnerPartyVotesDTO;
-import com.cvent.foodflick.models.dto.UpdateDinnerPartyDTO;
+import com.cvent.foodflick.models.dto.*;
 import com.cvent.foodflick.repositories.DinnerPartyRepository;
 import com.cvent.foodflick.services.utils.DetermineWinners;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,6 +34,7 @@ public class DinnerPartyService {
         return dinnerParties.stream().map(dinnerPartyMapper::toGetDinnerPartyDTO).toList();
     }
 
+    @Transactional(readOnly = true)
     public DinnerPartyDTO getDinnerPartyById(Long id){
         var dinnerParty = this.dinnerPartyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dinner Party not found with id: " + id));
@@ -64,6 +62,14 @@ public class DinnerPartyService {
         DinnerParty updatedDinnerParty = dinnerPartyRepository.save(dinnerParty);
 
         return dinnerPartyMapper.toDinnerPartyDTO(updatedDinnerParty);
+    }
+
+    public void updateDinnerPartyLocation(UpdateDinnerPartyLocationDTO dto, Long id) {
+        DinnerParty dinnerParty = dinnerPartyRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Dinner Party not found with id:" + id));
+
+        dinnerParty.setLocation(dto.getLocation());
+        dinnerPartyRepository.save(dinnerParty);
     }
 
     public DinnerPartyDTO lockDinnerPartyVotes(Long id){
