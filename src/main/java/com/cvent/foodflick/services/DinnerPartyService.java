@@ -8,6 +8,7 @@ import com.cvent.foodflick.repositories.DinnerPartyRepository;
 import com.cvent.foodflick.services.utils.DetermineWinners;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class DinnerPartyService {
         return dinnerParties.stream().map(dinnerPartyMapper::toGetDinnerPartyDTO).toList();
     }
 
+    @Transactional(readOnly = true)
     public DinnerPartyDTO getDinnerPartyById(Long id){
         var dinnerParty = this.dinnerPartyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dinner Party not found with id: " + id));
