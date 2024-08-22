@@ -3,13 +3,9 @@ package com.cvent.foodflick.models.dto;
 public class GetDinnerPartyDTO {
     private String party_name;
     private Long dinner_party_id;
+    private boolean finalized;
 
     public GetDinnerPartyDTO() {
-    }
-
-    public GetDinnerPartyDTO(String party_name, Long dinner_party_id) {
-        this.party_name = party_name;
-        this.dinner_party_id = dinner_party_id;
     }
 
     public String getParty_name() {
@@ -26,5 +22,13 @@ public class GetDinnerPartyDTO {
 
     public void setDinner_party_id(Long dinner_party_id) {
         this.dinner_party_id = dinner_party_id;
+    }
+
+    public boolean isFinalized() {
+        return finalized;
+    }
+
+    public void setFinalized(boolean finalized) {
+        this.finalized = finalized;
     }
 }
